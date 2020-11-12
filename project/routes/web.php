@@ -15,8 +15,9 @@
 //     return view('welcome');
 // });
 
+
 //ユーザーログイン
-Route::namspace('User')->prefix('user')->name('user,')->group(function () {
+Route::namespace('User')->prefix('user')->name('user.')->group(function () {
     Auth::routes([
         'register' => true,
         'reset'    => false,
@@ -29,7 +30,7 @@ Route::namspace('User')->prefix('user')->name('user,')->group(function () {
     });
 });
 //アドミンログイン
-Route::namspace('Admin')->prefix('admin')->name('admin,')->group(function () {
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Auth::routes([
         'register' => true,
         'reset'    => false,

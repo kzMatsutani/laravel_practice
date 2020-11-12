@@ -21,6 +21,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
+    //リダイレクト先のパス
     public const HOME = '/user/home';
     public const ADMIN_HOME = '/admin/home';
 
