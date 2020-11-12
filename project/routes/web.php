@@ -11,6 +11,33 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+//ユーザーログイン
+Route::namspace('User')->prefix('user')->name('user,')->group(function () {
+    Auth::routes([
+        'register' => true,
+        'reset'    => false,
+        'verify'   => false,
+    ]);
+    //ログイン認証後
+    Route::middleware('auth:user')->group(function() {
+        //TOPページ
+        Route::resource('home', 'HomeController', ['only' => 'index']);
+    });
+});
+//アドミンログイン
+Route::namspace('Admin')->prefix('admin')->name('admin,')->group(function () {
+    Auth::routes([
+        'register' => true,
+        'reset'    => false,
+        'verify'   => false,
+    ]);
+    //ログイン認証後
+    Route::middleware('auth:admin')->group(function() {
+        //TOPページ
+        Route::resource('home', 'HomeController', ['only' => 'index']);
+    });
 });
