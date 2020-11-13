@@ -11,6 +11,38 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+//ユーザーログイン
+Route::namespace('User')->prefix('user')->name('user.')->group(function () {
+    Auth::routes([
+        'register' => true,
+        'reset'    => false,
+        'verify'   => false,
+    ]);
+    //ログイン認証後
+    Route::middleware('auth:user')->group(function() {
+        //TOPページ
+        Route::resource('home', 'HomeController', ['only' => 'index']);
+    });
+});
+//アドミンログイン
+Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
+    Auth::routes([
+        'register' => true,
+        'reset'    => false,
+        'verify'   => false,
+    ]);
+    //ログイン認証後
+    Route::middleware('auth:admin')->group(function() {
+        //TOPページ
+        Route::resource('home', 'HomeController', ['only' => 'index']);
+        Route::get('account/admin_list', 'HomeController@showAdminList')->name('admin.list');
+        // Route::get('/', function () {
+        //     return view('welcome');
+        // });
+    });
 });

@@ -1,0 +1,22 @@
++--------+----------+-------------------------------+-----------------------+------------------------------------------------------------------------+------------------------------------------------------+
+| Domain | Method   | URI                           | Name                  | Action                                                                 | Middleware                                           |
++--------+----------+-------------------------------+-----------------------+------------------------------------------------------------------------+------------------------------------------------------+
+|        | GET|HEAD | _debugbar/assets/javascript   | debugbar.assets.js    | Barryvdh\Debugbar\Controllers\AssetController@js                       | Barryvdh\Debugbar\Middleware\DebugbarEnabled,Closure |
+|        | GET|HEAD | _debugbar/assets/stylesheets  | debugbar.assets.css   | Barryvdh\Debugbar\Controllers\AssetController@css                      | Barryvdh\Debugbar\Middleware\DebugbarEnabled,Closure |
+|        | DELETE   | _debugbar/cache/{key}/{tags?} | debugbar.cache.delete | Barryvdh\Debugbar\Controllers\CacheController@delete                   | Barryvdh\Debugbar\Middleware\DebugbarEnabled,Closure |
+|        | GET|HEAD | _debugbar/clockwork/{id}      | debugbar.clockwork    | Barryvdh\Debugbar\Controllers\OpenHandlerController@clockwork          | Barryvdh\Debugbar\Middleware\DebugbarEnabled,Closure |
+|        | GET|HEAD | _debugbar/open                | debugbar.openhandler  | Barryvdh\Debugbar\Controllers\OpenHandlerController@handle             | Barryvdh\Debugbar\Middleware\DebugbarEnabled,Closure |
+|        | GET|HEAD | _debugbar/telescope/{id}      | debugbar.telescope    | Barryvdh\Debugbar\Controllers\TelescopeController@show                 | Barryvdh\Debugbar\Middleware\DebugbarEnabled,Closure |
+|        | GET|HEAD | admin                         | admin.                | Closure                                                                | web,auth:admin                                       |
+|        | GET|HEAD | admin/home                    | admin.home.index      | App\Http\Controllers\Admin\HomeController@index                        | web,auth:admin                                       |
+|        | GET|HEAD | admin/login                   | admin.login           | App\Http\Controllers\Admin\Auth\LoginController@showLoginForm          | web,guest:admin                                      |
+|        | POST     | admin/login                   | admin.                | App\Http\Controllers\Admin\Auth\LoginController@login                  | web,guest:admin                                      |
+|        | POST     | admin/logout                  | admin.logout          | App\Http\Controllers\Admin\Auth\LoginController@logout                 | web                                                  |
+|        | GET|HEAD | api/user                      |                       | Closure                                                                | api,auth:api                                         |
+|        | GET|HEAD | user/home                     | user.home.index       | App\Http\Controllers\User\HomeController@index                         | web,auth:user,auth:User                              |
+|        | GET|HEAD | user/login                    | user.login            | App\Http\Controllers\User\Auth\LoginController@showLoginForm           | web,guest:user                                       |
+|        | POST     | user/login                    | user.                 | App\Http\Controllers\User\Auth\LoginController@login                   | web,guest:user                                       |
+|        | POST     | user/logout                   | user.logout           | App\Http\Controllers\User\Auth\LoginController@logout                  | web                                                  |
+|        | GET|HEAD | user/register                 | user.register         | App\Http\Controllers\User\Auth\RegisterController@showRegistrationForm | web,guest:user                                       |
+|        | POST     | user/register                 | user.                 | App\Http\Controllers\User\Auth\RegisterController@register             | web,guest:user                                       |
++--------+----------+-------------------------------+-----------------------+------------------------------------------------------------------------+------------------------------------------------------+
