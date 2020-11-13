@@ -40,5 +40,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::middleware('auth:admin')->group(function() {
         //TOPページ
         Route::resource('home', 'HomeController', ['only' => 'index']);
+        Route::get('account/admin_list', 'HomeController@showAdminList')->name('admin.list');
+        // Route::get('/', function () {
+        //     return view('welcome');
+        // });
     });
 });

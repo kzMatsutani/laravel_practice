@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laravel Practice Admin</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/login.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -17,16 +16,23 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">管理トップ <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ url('admin/home') }}">管理トップ <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">プロダクト管理</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">管理者管理</a>
+                    <a class="nav-link" href="#">ユーザー管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('admin/account/admin_list') }}">管理者管理</a>
                 </li>
             </ul>
-            <span class="navbar-text"> ログアウト </span>
+            <form action="{{ route('admin.logout')}}" method="post">
+                @csrf
+                <button type="submit">ログアウト</button>
+            </form>
+            </span>
         </div>
     </nav>
     @yield('content')
@@ -34,7 +40,7 @@
 		<div class="col-sm-4 text-pp-crt">copyright 2020 All  Rights Reserved</div>
 		<div class="col-sm-4 text-pp-crt-rg">Department of Information Reg No :</div>
 		<div class="col-sm-4 developer">
-			<a href="https://topline-tech.com" target="_blank" class="text-pp-crt">By : <b>T</b>es<b>t</b>.inc</a>
+			<a href="" target="_blank" class="text-pp-crt">By : <b>T</b>es<b>T</b>.inc</a>
 		</div>
 	</div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

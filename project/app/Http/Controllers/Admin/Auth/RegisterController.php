@@ -51,7 +51,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('admin.auth.register');
+        return view('admin.register');
     }
 
     /**
@@ -62,12 +62,26 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+        $rules = [
+            'name' => ['required', 'string', 'max:50'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        ];
+        $messages = [
+            'name.required'      => '※名前をご入力ください',
+            'name.max'           => '※50文字以内でご入力ください',
+            'email.required'     => '※メールアドレスをご入力ください',
+            'email.email'        => '※メールの書式が正しくありません',
+            'email.max'          => '※255文字以内のアドレスをご指定ください',
+            'email.unique'       => '※こちらのアドレスは既に使用されています',
+            'password.required'  => '※パスワードをご入力ください',
+            'password.min'       => '※8文字以上のパスワードをご指定ください',
+            'password.confirmed' => '※確認用アドレスと不一致になりました',
+
+        ];
+        return Validator::make($data, $rules, $messages);
     }
+
 
     /**
      * Create a new user instance after a valid registration.

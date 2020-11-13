@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin;
+use App\Models\User;
+
 
 class HomeController extends Controller
 {
@@ -87,5 +90,11 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showAdminList(Admin $admin)
+    {
+        $admins = $admin->all();
+        return view('admin.account.list', ['admins' => $admins]);
     }
 }
