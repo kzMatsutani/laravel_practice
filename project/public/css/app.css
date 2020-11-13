@@ -1,0 +1,30 @@
+
+/*-------------------------
+    フッター
+-------------------------*/
+.ft-copyright {
+    background-color: #FFFFFF;
+    border-top: 1px solid #121d6d;
+    display: flex;
+}
+
+.text-pp-crt,
+.text-pp-crt-rg {
+    color: #000a1f;
+}
+
+.developer {
+    text-align: center;
+}
+
+p.member {
+    color: #000a1f;
+}
+
+i.develop {
+    border: 1px red dotted;
+}
+
+.developer b {
+    color: red;
+}
