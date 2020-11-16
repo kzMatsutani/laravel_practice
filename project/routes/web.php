@@ -14,10 +14,9 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-
+Route::resource('/', 'User\HomeController', ['only' => 'index']);
 //ユーザーログイン
-Route::namespace('User')->prefix('user')->name('user.')->group(function () {
+Route::namespace('User')->name('user.')->group(function () {
     Auth::routes([
         'register' => true,
         'reset'    => false,
@@ -26,7 +25,8 @@ Route::namespace('User')->prefix('user')->name('user.')->group(function () {
     //ログイン認証後
     Route::middleware('auth:user')->group(function() {
         //TOPページ
-        Route::resource('home', 'HomeController', ['only' => 'index']);
+        // Route::resource('/', 'HomeController', ['only' => 'index']);
+        Route::get('/logout', 'Auth\LoginController@logout');
     });
 });
 //アドミンログイン

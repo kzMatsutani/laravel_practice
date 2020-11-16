@@ -47,7 +47,10 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('user.auth.login');
+        if ($user = Auth::user()) {
+            return redirect('/');
+        }
+        return view('login');
     }
 
     public function logout(Request $request)
@@ -58,6 +61,6 @@ class LoginController extends Controller
 
     public function loggedOut(Request $request)
     {
-        return redirect(route('user.login'));
+        return redirect('/');
     }
 }
