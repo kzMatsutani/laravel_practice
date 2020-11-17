@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 
 class HomeController extends Controller
@@ -23,7 +24,8 @@ class HomeController extends Controller
     public function index()
     {
         //
-        return view('admin.home');
+        $admin = Auth::user();
+        return view('admin.home', ['admin' => $admin]);
     }
 
     /**
@@ -95,6 +97,7 @@ class HomeController extends Controller
     public function showAdminList(Admin $admin)
     {
         $admins = $admin->all();
-        return view('admin.account.list', ['admins' => $admins]);
+        $adminss = Auth::user();
+        return view('admin.account.admin', ['admins' => $admins, 'admin' => $adminss]);
     }
 }

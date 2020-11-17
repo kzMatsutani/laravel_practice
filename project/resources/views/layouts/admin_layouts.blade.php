@@ -18,6 +18,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ url('admin/home') }}">管理トップ <span class="sr-only">(current)</span></a>
                 </li>
+                @if (isset($admin))
                 <li class="nav-item">
                     <a class="nav-link" href="#">プロダクト管理</a>
                 </li>
@@ -27,11 +28,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('admin/account/admin_list') }}">管理者管理</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('admin/logout') }}">ログアウト</a>
+                </li>
+                @endif
             </ul>
-            <form action="{{ route('admin.logout')}}" method="post">
-                @csrf
-                <button type="submit">ログアウト</button>
-            </form>
+                <span>管理者名:{{ $admin->name ?? '' }}</span>
             </span>
         </div>
     </nav>
