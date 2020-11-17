@@ -17,8 +17,7 @@
 
 
 Route::resource('/', 'User\HomeController', ['only' => 'index']);
-Route::get('register', 'User\Auth\RegisterController@showRegistrationForm')->name('user.register');
-Route::post('register', 'User\Auth\RegisterController@register');
+
 //ユーザーログイン
 Route::namespace('User')->name('user.')->group(function () {
     Auth::routes([
@@ -37,7 +36,7 @@ Route::namespace('User')->name('user.')->group(function () {
 //アドミンログイン
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Auth::routes([
-        'register' => true,
+        'register' => false,
         'reset'    => false,
         'verify'   => false,
     ]);
