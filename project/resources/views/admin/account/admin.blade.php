@@ -2,20 +2,21 @@
 @section('content')
 <div class="admin-account-container">
     <div class="card card-container">
+        <p><a href="{{ url('admin/register') }}">アカウント作成</a></p>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
+                    <th scope="col">id</th>
+                    <th scope="col">アカウント名</th>
+                    <th scope="col">メールアドレス</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($admins as $admin)
+                @foreach ($admins as $admins)
                     <tr>
-                        <th scope="row">{{ $admin->id }}</th>
-                        <td>{{ $admin->name }}</td>
-                        <td>{{ $admin->email }}</td>
+                        <th scope="row">{{ $admins->id }}</th>
+                        <td>{{ $admins->name }}</td>
+                        <td>{{ $admins->email }}</td>
                     </tr>
                 @endforeach
             </tbody>

@@ -14,7 +14,11 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+
 Route::resource('/', 'User\HomeController', ['only' => 'index']);
+Route::get('register', 'User\Auth\RegisterController@showRegistrationForm')->name('user.register');
+Route::post('register', 'User\Auth\RegisterController@register');
 //ユーザーログイン
 Route::namespace('User')->name('user.')->group(function () {
     Auth::routes([
@@ -29,6 +33,7 @@ Route::namespace('User')->name('user.')->group(function () {
         Route::get('/logout', 'Auth\LoginController@logout');
     });
 });
+
 //アドミンログイン
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Auth::routes([
@@ -40,9 +45,9 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function () {
     Route::middleware('auth:admin')->group(function() {
         //TOPページ
         Route::resource('home', 'HomeController', ['only' => 'index']);
-        Route::get('account/admin_list', 'HomeController@showAdminList')->name('admin.list');
-        // Route::get('/', function () {
-        //     return view('welcome');
-        // });
+        Route::get('/logout', 'Auth\LoginController@logout');
+        Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+        Route::post('/register', 'Auth\RegisterController@register')->name('create');
+        Route::get('account/admin_list', 'HomeController@showAdminList');
     });
 });

@@ -4,7 +4,7 @@
 <div class="register-container">
     <div class="card card-container">
         <p id="profile-name" class="profile-name-card">管理アカウント作成</p>
-        <form class="form-signin" method="POST" action="{{ route('admin.register') }}">
+        <form class="form-signin" method="POST" action="{{ route('admin.create') }}">
             @csrf
             <div class="form-group">
                 <label for="formGroupExampleInput">お名前
